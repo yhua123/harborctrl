@@ -54,13 +54,23 @@ func Run(cli *cli.Context) error {
 	//fmt.Printf("configfile: %s\n", configFile)
 
 	//prepare
-	prepare := exec.Command("./Deploy/prepare", "-conf", configFile)
+	prepare := exec.Command("prepare", "-conf", configFile)
 
 	prepare.Stdout = os.Stdout
 	prepare.Stderr = os.Stderr
 	err := prepare.Run()
 	if err != nil {
 		log.Errorf("prepare fail... %s", err)
+		return err
+	}
+
+	//load images
+	loadImage := exec.Command("load_image.sh")
+	loadImage.Stdout = os.Stdout
+	loadImage.Stderr = os.Stderr
+	err := loadImage.Run()
+	if err != nil {
+		log.Errorf("load images fail... %s", err)
 		return err
 	}
 
