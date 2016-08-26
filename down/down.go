@@ -32,8 +32,8 @@ func Flags() []cli.Flag {
 	flags := []cli.Flag{
 		cli.StringFlag{
 			Name:        "composefile, df",
-			Usage:       "Specify an alternate docker-compose file (default: Deploy/docker-compose.yml)",
-			Value:       "Deploy/docker-compose.yml",
+			Usage:       "Specify an alternate docker-compose file.",
+			Value:       "docker-compose.yml",
 			Destination: &composeFile,
 		},
 	}

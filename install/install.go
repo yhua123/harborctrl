@@ -33,14 +33,14 @@ func Flags() []cli.Flag {
 	flags := []cli.Flag{
 		cli.StringFlag{
 			Name:        "configfile, cf",
-			Usage:       "Specify an alternate config file (default: Deploy/harbor.cfg)",
-			Value:       "Deploy/harbor.cfg",
+			Usage:       "Specify an alternate config file.",
+			Value:       "harbor.cfg",
 			Destination: &configFile,
 		},
 		cli.StringFlag{
 			Name:        "composefile, df",
-			Usage:       "Specify an alternate docker-compose file (default: Deploy/docker-compose.yml)",
-			Value:       "Deploy/docker-compose.yml",
+			Usage:       "Specify an alternate docker-compose file.",
+			Value:       "docker-compose.yml",
 			Destination: &composeFile,
 		},
 	}
@@ -54,23 +54,13 @@ func Run(cli *cli.Context) error {
 	//fmt.Printf("configfile: %s\n", configFile)
 
 	//prepare
-	prepare := exec.Command("prepare", "-conf", configFile)
+	prepare := exec.Command("./prepare", "-conf", configFile)
 
 	prepare.Stdout = os.Stdout
 	prepare.Stderr = os.Stderr
 	err := prepare.Run()
 	if err != nil {
 		log.Errorf("prepare fail... %s", err)
-		return err
-	}
-
-	//load images
-	loadImage := exec.Command("load_image.sh")
-	loadImage.Stdout = os.Stdout
-	loadImage.Stderr = os.Stderr
-	err := loadImage.Run()
-	if err != nil {
-		log.Errorf("load images fail... %s", err)
 		return err
 	}
 

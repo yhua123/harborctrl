@@ -18,7 +18,7 @@ package version
 import (
 	"errors"
 	"fmt"
-	"os/exec"
+	//"os/exec"
 
 	log "github.com/Sirupsen/logrus"
 
@@ -33,10 +33,11 @@ func Run(cli *cli.Context) error {
 		return errors.New("")
 	}
 
-	gitversionCmd := exec.Command("git", "describe", "--tags")
-	gitversionOutput, _ := gitversionCmd.Output()
-	ReleaseTag := fmt.Sprintf(string(gitversionOutput))
-
+	//gitversionCmd := exec.Command("git", "describe", "--tags")
+	//gitversionOutput, _ := gitversionCmd.Output()
+	//ReleaseTag := fmt.Sprintf(string(gitversionOutput))
+        ReleaseTag := "0.3.5"
+      
 	if ReleaseTag != "" {
 		fmt.Fprintf(cli.App.Writer, "Harbor version: %s\n", ReleaseTag)
 	} else {

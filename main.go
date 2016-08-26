@@ -64,7 +64,7 @@ func main() {
 		{
 			Name:      "list",
 			ShortName: "ls",
-			Usage:     "List running Harbor continers.",
+			Usage:     "List running Harbor container.",
 			ArgsUsage: " ",
 			Action:    list.Run,
 		},
@@ -78,14 +78,14 @@ func main() {
 		{
 			Name:      "install",
 			ShortName: "i",
-			Usage:     "install Harbor continers.",
+			Usage:     "install Harbor container.",
 			Action:    install.Run,
 			Flags:     install.Flags(),
 		},
 		{
 			Name:      "down",
 			ShortName: "d",
-			Usage:     "Shutdown Harbor continers.",
+			Usage:     "Shutdown Harbor container.",
 			Action:    down.Run,
 			Flags:     down.Flags(),
 		},

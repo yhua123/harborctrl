@@ -28,10 +28,10 @@ import (
 var packageName string
 
 var checkPoint = map[string]string{
-	"config":         "Deploy/harbor.cfg",
-	"prepare":        "Deploy/prepare",
-	"docker":         "/usr/bin/docker",
-	"docker-compose": "/usr/local/bin/docker-compose",
+	"config":         "harbor.cfg",
+	"prepare":        "prepare",
+	//"docker":         "/usr/bin/docker",
+	//"docker-compose": "/usr/local/bin/docker-compose",
 }
 
 // Flags ...
